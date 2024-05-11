@@ -1,0 +1,278 @@
+@font-face{
+		font-family:"Lato";
+		src: url("static\assets\fonts\Lato-Light.ttf");
+}
+
+button {
+  margin: 20px;
+}
+
+div{
+white-space: pre-wrap;	
+}
+
+
+.custom-btn {
+
+  width: 100px;
+  height: 30px;
+  color: rgb(233,233,233);
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 30;
+  font-size:12px;
+  text-align:top;
+  background-color:rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: absolute;
+  top:75px;
+  left:193px;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+/* 16 */
+.btn-16 {
+  border: none;
+
+}
+.btn-16:after {
+	
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  direction: rtl;
+  z-index: -1;
+  box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+  transition: all 0.3s ease;
+}
+.btn-16:hover {
+  color: #000;
+}
+.btn-16:hover:after {
+  left: auto;
+  right: 0;
+  width: 100%;
+}
+.btn-16:active {
+  top:85px;
+}
+
+#uploaddiv{
+	width:280px;
+	height:25px;
+	position:absolute;
+}
+
+#upload_btn{
+  width: 100px;
+  height: 25px;
+  position:absolute;
+  left:190px;
+  top:-15px;
+  color: rgb(233,233,233);
+  border-radius: 5px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  font-size:12px;
+  background: transparent;
+  cursor: pointer;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  border:1px solid #fff;
+}
+
+#data_upload{
+	display:None;
+}
+
+#file_status{
+	font-size:12px;
+	color:#fff;
+	border-bottom:1px solid #fff;
+	width:200px;
+	height:25px;
+}
+
+#resample_rate,#resample_rate:focus{
+	border:None;
+	position:absolute;
+	top:50px;
+	border-bottom:1px solid #fff;
+	background-color:rgba(255,255,255,0);
+	width:200px;
+	height:25px;
+	outline:None;
+	font-family: 'Lato', sans-serif;
+	font-weight:200;
+	font-size:15px;
+}
+
+#resample_rate::-webkit-inner-spin-button,#resample_rate::-webkit-outer-spin-button{
+	-webkit-appearance:none;
+	margin:0;
+}
+
+#tip{
+	font-size:15px;
+	position:absolute;
+	top:100px;
+	font-family: 'Lato', sans-serif;
+	color:rgb(150,150,150);
+}
+
+
+#{
+	margin:0;
+	padding:0;
+}
+
+button{
+
+	top:40%;
+	left:30%;
+}
+body{
+	background-image: url("blank.png");
+	background-size: cover;
+	background-repeat:no-repeat;
+	transition:all 1s;
+	}
+.s{
+	background-image: url("ai-cover.jpg");
+}
+
+#fxkuangdiv{
+	width:0;
+	height:330px;
+	position:absolute;
+	top:30%;
+	right:15%;
+}
+
+
+.kuang,#introdiv{
+	display:none;
+	position:absolute;
+	background-color:transparent;
+	border: 2px solid rgba(255,255,255,0.5);
+	backdrop-filter: blur(8px);
+	top:20%;
+	left:0;
+	right:15%;
+	width:100%;
+	height:70%;
+	transition:all 1s;
+	box-shadow:1px 1px 5px 1px #fff;
+}
+
+#intro1{
+	position:absolute;
+	width:200px;
+	height:100px;
+	top:10%;
+	left:0;
+	background-color:red;
+}
+
+#intro2{
+	position:absolute;
+	width:200px;
+	height:100px;
+	top:40%;
+	left:0;
+}
+
+#intro3{
+	position:absolute;
+	width:200px;
+	height:100px;
+	top:70%;
+	left:0;
+}
+
+
+#frame{
+	position:absolute;
+	width:70%;
+	height:70%;
+	top:20%;
+	left:15%;
+}
+
+nav{
+	position:absolute;
+	top:8
+	right:15%;
+}
+
+a{
+	font-family:'Lato';
+	font-size:25px;
+	color:white;
+	margin:10px;
+	text-decoration:none;
+	border-bottom:1px solid white;
+
+}
+
+a:active{
+	color:grey;
+}
+
+#kuangdiv{
+	position:absolute;
+	width:70%;
+	left:15%;
+	height:70%;
+	top:18%;
+	
+}
+
+#introdiv{
+	position:absolute;
+	top:10%;
+	left:0;
+	width:100%;
+	height:0;
+	
+}
+
+h1{
+	position:absolute;
+	top:0;
+	left:0;
+	color:#fff;
+}
+
+.section-bg{
+	width:80%;
+	height:60%;
+	position:absolute;
+	top:20%;
+	left:10%;
+}
+
+.container{
+	width;0;
+	height:100%;
+	transition:all 1s;
+}
+
+#main{
+	transition:all 1s;
+	width:0;
+}

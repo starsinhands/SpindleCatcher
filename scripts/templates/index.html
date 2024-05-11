@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <script src="static/assets/js/echarts.min.js"></script>
+
+  <title>AQE-A&P Website</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+
+  <link href="static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
+
+
+  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+
+
+  <link href="static/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+
+  <header id="header">
+    <div class="container">
+
+      <div class="logo float-left">
+        <h1 class="text-light"><a href="./index"><span style="font-size: 32px;margin-top: 30px;">AQE-A&P</span></a></h1>
+
+      </div>
+
+      <nav class="nav-menu float-right d-none d-lg-block">
+        <ul>
+          <li class="active" style="width: 140px;"><a href="./main" style="color: black;">介绍<i class="la la-angle-down"></i></a></li>
+          <!-- <li style="width: 140px;"><a href="/Home" style="color: rgb(67, 146, 230);">主页</a></li> -->
+
+          <li style="width: 140px;"><a style="color: black;">文件处理</a>
+            <ul>
+              <li style="width: 140px;"><a href="./submit" style="color: black;">文件上传</a></li>
+              <li style="width: 140px;"><a href="./Home" style="color: black;">数据说明</a></li>
+            </ul>
+          </li>
+
+          <li style="width: 140px;"><a style="color: black;">空气质量分析</a>
+            <ul>
+              <li style="width: 140px;"><a href="./AQI" style="color:rgb(67, 146, 230)">AQI</a></li>
+              <li style="width: 140px;"><a href="./level" style="color: black;">质量等级</a></li>
+              <li style="width: 140px;"><a href="./PM2.5" style="color: black;">PM2.5</a></li>
+              <li style="width: 140px;"><a href="./PM10" style="color: black;">PM10</a></li>
+              <li style="width: 140px;"><a href="./SO2" style="color: black;">SO2</a></li>
+              <li style="width: 140px;"><a href="./CO" style="color: black;">CO</a></li>
+              <li style="width: 140px;"><a href="./NO2" style="color: black;">NO2</a></li>
+              <li style="width: 140px;"><a href="./O3" style="color: black;">O3</a></li>
+              <li style="width: 140px;"><a href="./rank" style="color: black;">综合评分</a></li>
+            </ul>
+          </li>
+          <li style="width: 140px;"><a href="./predict" style="color: black;">空气质量预测</a></li>
+          <li style="width: 140px;"><a href="./team" style="color: black;">团队</a></li>
+          <li style="width: 140px;"><a href="./other" style="color: black;">其它</a>
+            <ul>
+              <li style="width: 140px;"><a href="/more" style="color: black;text-decoration: none;">更多</a></li>
+          </ul>
+          </li>
+
+        </ul>
+      </nav>
+
+    </div>
+  </header><!-- End Header -->
+    <section id="team" class="team" style="background-color: #F5F9FC;">
+      <div class="container">
+        <div class="section-title">
+          <h2>AQI变化图</h2>
+        </div>
+		<section class="counts section-bg" style="background-color: #c5dbf4;">
+			<div class="container">
+				<div id="main" style="width: 100%;height:500px"></div>
+			</div>
+		</section>
+
+      </div>
+    </section>
+
+ <script type="text/javascript">
+<!--import * as echarts from 'echarts';-->
+
+var chartDom = document.getElementById('main');
+var myChart = echarts.init(chartDom);
+var option;
+
+// $.get(, function (data) {
+//   myChart.setOption(
+//     (
+    option = {
+    title: {
+        text: '脑电图-纺锤波图',
+        subtext: '纺锤波片段用红色区块标出',
+        left: 'center',
+        align: 'right'
+    },
+    grid: {
+        bottom: 80
+    },
+    toolbox: {
+        feature: {
+            dataZoom: {
+                yAxisIndex: 'none'
+            },
+            restore: {},
+            saveAsImage: {}
+        }
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross',
+            animation: false,
+            label: {
+                backgroundColor: '#505765'
+            }
+        }
+    },
+    legend: {
+        data: ['电压'],
+        left: 10
+    },
+    dataZoom: [
+        {
+            show: true,
+            realtime: true,
+            start: 65,
+            end: 85
+        },
+        {
+            type: 'inside',
+            realtime: true,
+            start: 65,
+            end: 85
+        }
+    ],
+    xAxis: [
+        {
+            type: 'category',
+            boundaryGap: false,
+            axisLine: {onZero: false},
+            data: {{time|tojson}}
+        }
+    ],
+    yAxis: [
+        {
+            name: '电压',
+            type: 'value',
+            max: 600
+        }
+    ],
+    series: [
+        {
+            name: '电压',
+            type: 'line',
+            animation: false,
+            areaStyle: {},
+            lineStyle: {
+                width: 1
+            },
+            markArea: {
+                silent: true,
+                data: {{area|tojson}},
+				
+            },
+            data: {{eeg}}
+        },
+       
+    ]
+};
+
+    // )
+//   );
+// });
+;
+// option && myChart.setOption(option);
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+
+
+
+    </script>
+
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+
+    <div class="container">
+      <div class="copyright">
+        &copy; 华师软院 <strong><span>小蒟蒻</span></strong>.熬夜打造
+      </div>
+
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+
+  <script src="static/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="static/assets/vendor/jquery-sticky/jquery.sticky.js"></script>
+  <script src="static/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="static/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="static/assets/vendor/counterup/counterup.min.js"></script>
+  <script src="static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="static/assets/vendor/aos/aos.js"></script>
+
+  <script src="static/assets/js/main.js"></script>
+
+</body>
+<style>
+    body{
+    background-color: #F5F9FC;
+  }
+  li{
+    list-style-type: none;
+    width: 160px;
+    height: 50px;
+    line-height: 50px;
+
+    text-align: center;
+}
+a{
+    font-size: 19px;
+    font-weight: bold;
+
+}
+div ul li{
+    float: left;
+
+}
+div ul li ul{
+    display: none;
+}
+div ul li:hover ul{
+    display: block;
+
+}
+
+
+</style>
+</html>

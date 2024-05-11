@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link rel="stylesheet" href="static\assets\css\style.css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
+		<meta content="" name="descriptison">
+		<meta content="" name="keywords">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<script src="static/assets/js/echarts.min.js"></script>
+		<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">		</script>
+		<script src="static\assets\js\thisisjs.js"></script>
+	</head>
+	
+	<body style="height:1400px">
+		<header id="resultheader">
+			<div id="logo">SPINDLE-CATCHER</div>
+			<nav id="resultnav">
+				<a href="/" style="width:140px ; color:black ;font-size:15px ; position:absolute ; bottom:0 ; right:30px"><b>纺锤波检测</b></a>
+				<a href="/team" style="width:140px ; color:black ; font-size:15px  ; position:absolute ; bottom:0 ;"><b>团队介绍</b></a>
+			</nav>
+		</header>
+	
+		<div id="paperback">
+		<div id="paper">
+			<img id="icon1" src="static\assets\img\icon1.png">
+			<img id="icon2" src="static\assets\img\icon2.png">
+			<h1 id="title">脑电检测报告</h1>
+			
+			
+		
+			<section class="counts section-bg">
+				<div class="container">
+					<div id="main" style="width: 100%;height:500px"></div>
+				</div>
+			</section>
+		
+			<table id="dataArea" cellspacing="30">
+				<tr>
+					<td><b class="tip">纺锤波密度：</b></td>
+					<td ><b class="tip">纺锤波持续时间：</b></td>
+					<td ><b class="tip">脑电波持续时间：</b></td>
+				</tr>
+				<tr>
+					<td><b class="tip">病人名称：</b></td>
+					<td><b class="tip">病人年龄：</b></td>
+					<td><b class="tip">病人性别：</b></td>
+				</tr>
+			</table>
+		
+		
+		</div>
+		</div>
+		
+		  <footer id="footer">
+				<div class="copyright">
+					&copy; <strong><span>脑机创新团队</span></strong>
+				</div>
+		</footer>
+		
+		<script type="text/javascript">
+			var chartDom = document.getElementById('main');
+			var myChart = echarts.init(chartDom);
+			var density = {{density|tojson}};
+			var duration = {{duration|tojson}};
+			var patient_name = {{patient_name|tojson}};
+			var patient_age = {{patient_age|tojson}};
+			var total_time = {{total_time|tojson}};
+			var patient_gender = {{patient_gender|tojson}};
+			var b1 = document.getElementsByClassName("tip")[0];
+			var b2 = document.getElementsByClassName("tip")[1];
+			var b3 = document.getElementsByClassName("tip")[2];
+			var b4 = document.getElementsByClassName("tip")[3];
+			var b5 = document.getElementsByClassName("tip")[4];
+			var b6 = document.getElementsByClassName("tip")[5];
+			b1.innerHTML = "纺锤波密度：" + density + "(纺锤波持续时间/脑电波时间)";
+			b2.innerHTML = "纺锤波持续时间：" + duration + "秒";
+			b3.innerHTML = "病人名称：" + patient_name;
+			b4.innerHTML = "病人年龄：" + patient_age + "岁";
+			b5.innerHTML = "脑电波持续时间：" + total_time + "秒";
+			b6.innerHTML = "病人性别：" + patient_gender;
+			var option;
+			option = {
+				title: {
+					text: '脑电图-纺锤波图',
+					subtext: '纺锤波片段用红色区块标出',
+					left: 'center',
+					align: 'right'
+				},
+				grid: {
+					bottom: 80
+				},
+				toolbox: {
+					feature: {
+						dataZoom: {
+							yAxisIndex: 'none'
+						},
+						restore: {},
+						saveAsImage: {}
+					}
+				},
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: {
+					type: 'cross',
+					animation: false,
+				label: {
+					backgroundColor: '#505765'
+					}
+					}
+					},
+				legend: {
+					data: ['电压'],
+						left: 10
+				},
+				dataZoom: [
+						{
+					show: true,
+					realtime: true,
+					start: 65,
+					end: 85
+				},
+				{
+					type: 'inside',
+					realtime: true,
+					start: 65,
+					end: 85
+						}
+					],
+					xAxis: [
+						{
+							type: 'category',
+							boundaryGap: false,
+							axisLine: {onZero: false},
+							data: {{time|tojson}}
+						}
+					],
+					yAxis: [
+						{
+							name: '电压',
+							type: 'value',
+							max: 600
+						}
+					],
+					series: [
+						{
+							name: '电压',
+							type: 'line',
+							animation: false,
+							areaStyle: {},
+							lineStyle: {
+								width: 1
+							},
+							markArea: {
+								silent: true,
+								data: {{area|tojson}},
+								
+							},
+							data: {{eeg}}
+						},
+					   
+					]
+				};
+				if (option && typeof option === "object") {
+						myChart.setOption(option, true);
+					}
+			</script>
+	</body>
+</html>
